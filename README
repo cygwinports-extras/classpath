@@ -1,0 +1,250 @@
+classpath
+------------------------------------------
+GNU Classpath, Essential Libraries for Java, is a GNU project to create 
+free core class libraries for use with virtual machines and compilers 
+for the java programming language.
+
+Runtime requirements:
+  cygwin-1.5.24-2
+  GConf2-2.16.0-1
+  file-4.19-1
+  gdk-pixbuf2-2.10.9-1
+  glib2-2.12.9-1
+  gtk2-x11-2.10.9-1
+  jamvm-1.4.5-1
+  java-asm-2.2.3-1
+  java-escher-0.2.3-1
+  libX11_6-1.1.1-1
+  libXrandr2-1.1.2-1
+  libXrender1-0.9.2-1
+  libXtst6-1.0.1-1
+  libcairo2-1.2.6-1
+  libfreetype26-2.2.1-1
+  libiconv2-1.11-1
+  libxml2-2.6.27-1
+  libxslt-1.1.20-1
+  pango-1.14.10-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  cygwin-1.5.24-2
+  autoconf2.5-2.61-1
+  automake1.9-1.9.6-2
+  binutils-20060817-1
+  bison-2.3-1
+  cygport-0.3.1-1
+  fastjar-0.94-1
+  flex-2.5.33-1
+  gawk-3.1.5-4
+  gcc-core-3.4.4-3
+  jikes-1.22-1
+  libtool1.5-1.5.23a-2
+  make-3.81-1
+  pkg-config-0.21-1
+  sed-4.1.5-2
+
+Canonical website:
+  http://www.gnu.org/software/classpath/
+
+Canonical download:
+  ftp://ftp.gnu.org/gnu/classpath/
+
+-------------------------------------------
+
+Build instructions:
+  unpack classpath-0.93-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./classpath-0.93-X.cygport all
+
+This will create:
+  /usr/src/classpath-0.93-X-src.tar.bz2
+  /usr/src/classpath-0.93-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /etc/postinstall/classpath.sh
+  /usr/bin/gappletviewer
+  /usr/bin/gjar
+  /usr/bin/gjarsigner
+  /usr/bin/gjavah
+  /usr/bin/gkeytool
+  /usr/bin/gnative2ascii
+  /usr/bin/gorbd
+  /usr/bin/grmic
+  /usr/bin/grmid
+  /usr/bin/grmiregistry
+  /usr/bin/gserialver
+  /usr/bin/gtnameserv
+  /usr/include/classpath/jawt.h
+  /usr/include/classpath/jawt_md.h
+  /usr/include/classpath/jni.h
+  /usr/include/classpath/jni_md.h
+  /usr/lib/classpath/cyggconfpeer.dll
+  /usr/lib/classpath/cyggtkpeer.dll
+  /usr/lib/classpath/cygjavaio.dll
+  /usr/lib/classpath/cygjavalang.dll
+  /usr/lib/classpath/cygjavalangreflect.dll
+  /usr/lib/classpath/cygjavanet.dll
+  /usr/lib/classpath/cygjavanio.dll
+  /usr/lib/classpath/cygjavautil.dll
+  /usr/lib/classpath/cygjawt.dll
+  /usr/lib/classpath/cygxmlj.dll
+  /usr/lib/classpath/libgconfpeer.la
+  /usr/lib/classpath/libgtkpeer.la
+  /usr/lib/classpath/libjavaio.la
+  /usr/lib/classpath/libjavalang.la
+  /usr/lib/classpath/libjavalangreflect.la
+  /usr/lib/classpath/libjavanet.la
+  /usr/lib/classpath/libjavanio.la
+  /usr/lib/classpath/libjavautil.la
+  /usr/lib/classpath/libjawt.la
+  /usr/lib/classpath/libxmlj.la
+  /usr/lib/logging.properties
+  /usr/lib/security/classpath.security
+  /usr/share/classpath/examples/Makefile.java2d
+  /usr/share/classpath/examples/Makefile.jawt
+  /usr/share/classpath/examples/README
+  /usr/share/classpath/examples/examples.zip
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/NamingService/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/DemoServer.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/DemoServant.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/DemoTester.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/DirectTest.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/RequestTest.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToPass.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToPassHelper.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToPassHolder.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToReturn.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToReturnHelper.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/StructureToReturnHolder.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/TreeNode.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/TreeNodeHelper.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/TreeNodeHolder.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/WeThrowThisException.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/WeThrowThisExceptionHelper.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/_DemoTesterImplBase.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/SimpleCommunication/communication/_DemoTesterStub.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/README.html
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/CanvasWorld.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/ChatConstants.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/ClientFrame.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/GameManager.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/GameManagerImpl.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/IorReader.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/OrbStarter.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/Player.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/PlayerImpl.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/PlayingDesk.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/State.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/X5Server.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/_GameManagerImpl_Tie.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/_GameManager_Stub.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/_PlayerImpl_Tie.java
+  /usr/share/classpath/examples/gnu/classpath/examples/CORBA/swing/x5/_Player_Stub.java
+  /usr/share/classpath/examples/gnu/classpath/examples/awt/AicasGraphicsBenchmark.java
+  /usr/share/classpath/examples/gnu/classpath/examples/awt/AnimationApplet.java
+  /usr/share/classpath/examples/gnu/classpath/examples/awt/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/datatransfer/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/html/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/back.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/badge.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/big-fullscreen.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/big-home.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/big-warning.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/reload.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-copy.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-cut.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-go-back.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-go-down.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-go-forward.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-mic.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-new.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-open.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-paste.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-quit.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-save-as.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-save.png
+  /usr/share/classpath/examples/gnu/classpath/examples/icons/stock-spell-check.png
+  /usr/share/classpath/examples/gnu/classpath/examples/java2d/J2dBenchmark.java
+  /usr/share/classpath/examples/gnu/classpath/examples/java2d/J2dBenchmarkGUI.java
+  /usr/share/classpath/examples/gnu/classpath/examples/java2d/JNIOverhead.java
+  /usr/share/classpath/examples/gnu/classpath/examples/java2d/bench.c
+  /usr/share/classpath/examples/gnu/classpath/examples/java2d/bench.h
+  /usr/share/classpath/examples/gnu/classpath/examples/jawt/DemoJAWT.c
+  /usr/share/classpath/examples/gnu/classpath/examples/jawt/DemoJAWT.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestBeans.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestClassLoading.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestCompilation.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestGarbageCollector.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestMemory.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestMemoryManager.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestMemoryPool.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestOS.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestRuntime.java
+  /usr/share/classpath/examples/gnu/classpath/examples/management/TestThread.java
+  /usr/share/classpath/examples/gnu/classpath/examples/midi/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/print/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/BrowserEditorKit.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/ButtonDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/ComboBoxDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/Demo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/DemoDesktop.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/DemoFactory.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/DocumentFilterDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/FileChooserDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/HtmlDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/ListDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/MetalThemeEditor.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/MiniDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/NavigationFilterDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/ProgressBarDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/ScrollBarDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/SliderDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/SpinnerDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/TabbedPaneDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/TableDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/TextAreaDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/TextFieldDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/TreeDemo.java
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/forms.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/frame1.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/frame2.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/frame3.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/frame4.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/frames.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/tables.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/textstyles.html
+  /usr/share/classpath/examples/gnu/classpath/examples/swing/welcome.html
+  /usr/share/classpath/glibj.zip
+  /usr/share/classpath/tools.zip
+  /usr/share/doc/Cygwin/classpath-0.93.README
+  /usr/share/doc/classpath-0.93/AUTHORS
+  /usr/share/doc/classpath-0.93/BUGS
+  /usr/share/doc/classpath-0.93/COPYING
+  /usr/share/doc/classpath-0.93/ChangeLog
+  /usr/share/doc/classpath-0.93/HACKING
+  /usr/share/doc/classpath-0.93/INSTALL
+  /usr/share/doc/classpath-0.93/LICENSE
+  /usr/share/doc/classpath-0.93/NEWS
+  /usr/share/doc/classpath-0.93/README
+  /usr/share/doc/classpath-0.93/TODO
+  /usr/share/info/hacking.info.gz
+  /usr/share/info/tools.info.gz
+  /usr/share/info/vmintegration.info.gz
+
+------------------
+
+Port Notes:
+
+----- version 0.93-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/
