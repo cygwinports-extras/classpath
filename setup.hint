@@ -1,5 +1,5 @@
 category: Java
-requires: cygwin GConf2 file gdk-pixbuf2 glib2 gtk2-x11 libX11_6 libXrandr2 libXrender1 libXtst6 libcairo2 libfreetype26 libiconv2 libxml2 libxslt pango jamvm java-asm java-escher
+requires: GConf2 file gdk-pixbuf2 glib2 gtk2-x11 libX11_6 libXrandr2 libXrender1 libXtst6 libcairo2 libfreetype26 libiconv2 libxml2 libxslt pango jamvm java-asm java-escher
 sdesc: "GNU Java core class libraries"
 ldesc: "GNU Classpath, Essential Libraries for Java, is a GNU project to 
 create free core class libraries for use with virtual machines and 
