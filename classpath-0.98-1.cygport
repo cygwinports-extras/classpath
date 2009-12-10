@@ -1,0 +1,67 @@
+inherit java
+
+DESCRIPTION="GNU Classpath Java class libraries"
+HOMEPAGE="http://www.gnu.org/software/classpath/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+
+PATCH_URI="0.98-FIONREAD.patch
+           0.98-awt.patch
+           0.98-build.patch"
+
+PKG_NAMES="${PN} ${PN}-doc ${PN}-examples ${PN}-tools java-${PN}"
+classpath_doc_CONTENTS="usr/share/javadoc/"
+classpath_examples_CONTENTS="usr/share/classpath/examples/"
+classpath_tools_CONTENTS="etc/ usr/bin/ usr/share/info/ usr/share/man/"
+java_classpath_CONTENTS="--exclude=examples usr/include/ usr/lib/classpath/
+                         usr/share/classpath/ usr/share/doc/"
+
+DEPS_PATH="/usr/lib/classpath"
+DIFF_EXCLUDES="Makefile resource gjdoc.properties *.html"
+
+#	--includedir=/usr/include/${PN}
+CYGCONF_ARGS="
+	--with-antlr-jar=/usr/share/java/antlr.jar
+	--with-ecj-jar=/usr/share/java/ecj.jar
+	--disable-alsa
+	--disable-plugin
+	--enable-default-toolkit=gnu.java.awt.peer.gtk.GtkToolkit
+	--enable-default-preferences-peer=file
+	--disable-gconf-peer
+	--disable-gstreamer-peer
+	--enable-gtk-peer
+	--disable-qt-peer
+	JAVA=/usr/bin/jamvm JAVAC=/usr/bin/ecj
+"
+
+src_compile() {
+	export gjl_java_args="-Xmx768M"
+
+	cd ${S}
+	cygautoreconf
+	cd ${B}
+	cygconf
+	cygmake JAVACFLAGS="-nowarn"
+
+	cd ${B}/doc/api
+	make html \
+		GJDOC="\$(JAVA) -Xmx512M -classpath ${B}/tools/tools.zip:\$(ANTLR_JAR) gnu.classpath.tools.gjdoc.Main"
+}
+
+src_install() {
+	cd ${B}
+	cyginstall
+	dojavadoc doc/api/html
+
+	# gij-4 provides these as well
+	for x in ${D}/usr/bin/*
+	do
+		mv ${x} ${x}-cp
+	done
+	for x in ${D}/usr/share/man/man1/*.1
+	do
+		mv ${x} ${x%.1}-cp.1
+	done
+
+	# conflicts with libgcj-common
+	rm -f ${D}/usr/lib/logging.properties ${D}/usr/lib/security/classpath.security
+}

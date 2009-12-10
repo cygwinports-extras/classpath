@@ -1,0 +1,39 @@
+--- origsrc/classpath-0.98/native/jni/gstreamer-peer/gst_native_pipeline.c	2008-08-18 11:36:56.000000000 -0500
++++ src/classpath-0.98/native/jni/gstreamer-peer/gst_native_pipeline.c	2009-12-06 01:58:25.106613400 -0600
+@@ -59,6 +59,10 @@ exception statement from your version. *
+ #include <sys/filio.h>
+ #endif
+ 
++#ifdef __CYGWIN__
++#undef FIONREAD
++#endif
++
+ #include <gdk/gdk.h>
+ #include <glib.h>
+ 
+--- origsrc/classpath-0.98/native/jni/java-net/local.c	2008-08-12 06:14:45.000000000 -0500
++++ src/classpath-0.98/native/jni/java-net/local.c	2009-12-06 01:58:25.106613400 -0600
+@@ -59,6 +59,10 @@ exception statement from your version.  
+ #include <sys/filio.h>
+ #endif
+ 
++#ifdef __CYGWIN__
++#undef FIONREAD
++#endif
++
+ #include "local.h"
+ 
+ const char *
+--- origsrc/classpath-0.98/native/jni/java-nio/gnu_java_nio_VMChannel.c	2007-12-28 11:49:56.000000000 -0600
++++ src/classpath-0.98/native/jni/java-nio/gnu_java_nio_VMChannel.c	2009-12-06 01:58:25.122213400 -0600
+@@ -76,6 +76,10 @@ exception statement from your version. *
+ #include <sys/filio.h>
+ #endif
+ 
++#ifdef __CYGWIN__
++#undef FIONREAD
++#endif
++
+ #define CONNECT_EXCEPTION "java/net/ConnectException"
+ #define IO_EXCEPTION "java/io/IOException"
+ #define SOCKET_EXCEPTION "java/net/SocketException"

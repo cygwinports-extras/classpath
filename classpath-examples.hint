@@ -1,0 +1,7 @@
+category: Java
+requires: jamvm
+external-source: classpath
+sdesc: "GNU Java core class libraries (examples)"
+ldesc: "GNU Classpath, Essential Libraries for Java, is a GNU project to 
+create free core class libraries for use with virtual machines and 
+compilers for the java programming language."
