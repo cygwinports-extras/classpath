@@ -5,20 +5,20 @@ free core class libraries for use with virtual machines and compilers
 for the java programming language.
 
 Runtime requirements:
-  cygwin-1.7.0-67
+  cygwin-1.7.1-1
+  ecj-3.3.2-1
   file-5.00-3
   java-antlr-2.7.7-2
-  java-ecj-3.3.2-1
-  libcairo2-1.8.8-1
-  libfreetype6-2.3.11-1
-  libgcc1-4.3.4-1
-  libgdk_pixbuf2.0_0-2.18.3-1
-  libglib2.0_0-2.22.2-1
+  libcairo2-1.8.10-1
+  libfreetype6-2.3.12-1
+  libgcc1-4.3.4-3
+  libgdk_pixbuf2.0_0-2.18.6-1
+  libglib2.0_0-2.22.4-2
   libgmp3-4.3.1-3
-  libgtk2.0_0-2.18.3-1
-  libiconv2-1.13-10
-  libpango1.0_0-1.26.0-1
-  libX11_6-1.3.2-2
+  libgtk2.0_0-2.18.6-1
+  libiconv2-1.13.1-1
+  libpango1.0_0-1.26.2-1
+  libX11_6-1.3.3-1
   libXrandr2-1.3.0-10
   libXrender1-0.9.5-1
   libXtst6-1.1.0-1
@@ -26,19 +26,19 @@ Runtime requirements:
 Build requirements:
 (besides corresponding -devel packages)
   antlr-2.7.7-2
-  autoconf2.5-2.63-10
-  automake1.10-1.10.2-10
-  binutils-2.19.51-1
-  bison-2.3-1
-  cygport-0.9.10-1
-  fastjar-0.98-1
+  autoconf2.5-2.65-1
+  automake1.10-1.10.3-1
+  binutils-2.20.51-1
+  bison-2.4.2-1
+  cygport-0.9.83-1
+  fastjar-0.98-2
   flex-2.5.35-1
   gawk-3.1.7-1
-  gcc4-core-4.3.4-1
-  libtool-2.2.7a-14
+  gcc4-core-4.3.4-3
+  libtool-2.2.7a-15
   make-3.81-2
   pkg-config-0.23b-10
-  sed-4.1.5-2
+  sed-4.2.1-1
 
 Canonical website:
   http://www.gnu.org/software/classpath/
@@ -65,6 +65,10 @@ This will create:
 -------------------------------------------
 
 Port Notes:
+
+----- version 0.98-2 -----
+Fixed bug in NIO:
+http://gcc.gnu.org/bugzilla/show_bug.cgi?id=35536
 
 ----- version 0.98-1 -----
 Initial release for Cygwin 1.7.
