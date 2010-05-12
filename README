@@ -67,8 +67,9 @@ This will create:
 Port Notes:
 
 ----- version 0.98-2 -----
-Fixed bug in NIO:
-http://gcc.gnu.org/bugzilla/show_bug.cgi?id=35536
+* Fixed bug in NIO: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=35536
+* Added package com.sun.image.codec.jpeg from IcedTea6.
+* Added sun.misc.BASE64{De,En}coder from OpenJDK.
 
 ----- version 0.98-1 -----
 Initial release for Cygwin 1.7.

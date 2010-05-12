@@ -1,12 +1,30 @@
+icedtea="http://icedtea.classpath.org/hg/icedtea6/raw-file/tip"
+openjdk="http://hg.openjdk.java.net/jdk6/jdk6/jdk/raw-file/tip"
+
 inherit java
 
 DESCRIPTION="GNU Classpath Java class libraries"
 HOMEPAGE="http://www.gnu.org/software/classpath/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-PATCH_URI="0.98-ioctl-FIONREAD.patch
-           0.98-awt.patch
-           0.98-build.patch"
+# icedtea-jpegclasses: com.sun.image.codec.jpeg, required for xmlgraphics-commons
+# sun/misc/BASE64*: required for Glassfish/J2EE (rest are supporting classes)
+SRC_URI="
+	mirror://gnu/${PN}/${P}.tar.gz
+	${openjdk}/src/share/classes/sun/misc/BASE64Decoder.java
+	${openjdk}/src/share/classes/sun/misc/BASE64Encoder.java
+	${openjdk}/src/share/classes/sun/misc/CEFormatException.java
+	${openjdk}/src/share/classes/sun/misc/CEStreamExhausted.java
+	${openjdk}/src/share/classes/sun/misc/CharacterDecoder.java
+	${openjdk}/src/share/classes/sun/misc/CharacterEncoder.java
+	${icedtea}/patches/icedtea-jpegclasses.patch
+"
+
+PATCH_URI="
+	0.98-ioctl-FIONREAD.patch
+	0.98-awt.patch
+	0.98-build.patch
+	0.98-package-com.patch
+"
 
 PKG_NAMES="${PN} ${PN}-doc ${PN}-examples ${PN}-tools java-${PN}"
 classpath_doc_CONTENTS="usr/share/javadoc/"
@@ -17,6 +35,13 @@ java_classpath_CONTENTS="--exclude=examples usr/include/ usr/lib/classpath/
 
 DEPS_PATH="/usr/lib/classpath"
 DIFF_EXCLUDES="Makefile resource gjdoc.properties *.html"
+
+CYGPORT_USE_UNSTABLE_API=1
+src_unpack_hook() {
+	mv -f *.java sun/misc/
+	rm -f com/sun/image/codec/jpeg/*
+	patch -p5 < icedtea-jpegclasses.patch
+}
 
 #	--includedir=/usr/include/${PN}
 CYGCONF_ARGS="
@@ -38,9 +63,9 @@ src_compile() {
 	export gjl_java_args="-Xmx768M"
 
 	cd ${S}
-	cygautoreconf
+#	cygautoreconf
 	cd ${B}
-	cygconf
+#	cygconf
 	cygmake JAVACFLAGS="-nowarn"
 
 	cd ${B}/doc/api

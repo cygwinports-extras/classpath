@@ -1,0 +1,36 @@
+icedtea-jpegclasses.patch adds com.sun.image.codec.jpeg, the first
+package under the com/ heirarchy.
+
+--- origsrc/classpath-0.98/lib/gen-classlist.sh.in	2008-04-18 09:30:35.000000000 -0500
++++ src/classpath-0.98/lib/gen-classlist.sh.in	2010-05-11 23:48:09.478016700 -0500
+@@ -18,7 +18,7 @@ echo "Adding java source files from srcd
+ # We do this because it makes splitting for the gcj build much
+ # cheaper.
+ (cd @top_srcdir@
+- @FIND@ java javax gnu org sun -follow -name '*.java' -print |
++ @FIND@ java javax com gnu org sun -follow -name '*.java' -print |
+  sort -r | sed -e 's,/\([^/]*\)$, \1,' |
+  while read pkg file; do
+     echo $pkg @top_srcdir@ $pkg/$file
+--- origsrc/classpath-0.98/lib/Makefile.am	2008-09-12 22:07:27.000000000 -0500
++++ src/classpath-0.98/lib/Makefile.am	2010-05-11 23:49:53.649975000 -0500
+@@ -43,6 +43,7 @@ if INSTALL_CLASS_FILES
+ 
+ install-data-local: genclasses compile-classes
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
++	cp -R com $(DESTDIR)$(pkgdatadir)
+ 	cp -R gnu $(DESTDIR)$(pkgdatadir)
+ 	cp -R java $(DESTDIR)$(pkgdatadir)
+ 	cp -R javax $(DESTDIR)$(pkgdatadir)
+@@ -71,9 +72,9 @@ glibj.zip:
+ else
+ 
+ if WITH_JAR
+-CREATE_GLIBJ_ZIP=$(JAR) cf glibj.zip gnu java javax org sun META-INF
++CREATE_GLIBJ_ZIP=$(JAR) cf glibj.zip com gnu java javax org sun META-INF
+ else
+-CREATE_GLIBJ_ZIP=$(ZIP) -r -D glibj.zip gnu java javax org sun META-INF > /dev/null
++CREATE_GLIBJ_ZIP=$(ZIP) -r -D glibj.zip com gnu java javax org sun META-INF > /dev/null
+ endif
+ 
+ glibj.zip: classes compile-classes resources
