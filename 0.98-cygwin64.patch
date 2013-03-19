@@ -1,0 +1,25 @@
+--- origsrc/classpath-0.98/native/fdlibm/mprec.c	2006-09-25 13:26:16.000000000 -0500
++++ src/classpath-0.98/native/fdlibm/mprec.c	2013-03-18 21:03:57.687744600 -0500
+@@ -80,6 +80,11 @@
+  *	down depends on the machine and the number being converted.
+  */
+ 
++#ifdef __CYGWIN__
++#define __Long long
++#define __ULong unsigned long
++#endif
++
+ /*#include <_ansi.h>*/
+ #include <assert.h>
+ #include <stdlib.h>
+@@ -97,8 +102,10 @@
+ #define _REENT_MP_FREELIST(x) ((x)->_freelist)
+ #define _REENT_MP_P5S(x) ((x)->_p5s)
+ 
++#ifndef __CYGWIN__
+ typedef unsigned long __ULong;
+ typedef long __Long;
++#endif
+ 
+ static void *
+ mprec_calloc (void *ignore, size_t x1, size_t x2)

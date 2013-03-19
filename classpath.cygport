@@ -1,13 +1,19 @@
-icedtea="http://icedtea.classpath.org/hg/icedtea6/raw-file/tip"
-openjdk="http://hg.openjdk.java.net/jdk6/jdk6/jdk/raw-file/tip"
-
 inherit java
 
-DESCRIPTION="GNU Classpath Java class libraries"
+NAME="classpath"
+VERSION=0.98
+RELEASE=3
+CATEGORY="Java"
+SUMMARY="GNU Java core class libraries"
+DESCRIPTION="GNU Classpath, Essential Libraries for Java, is a GNU project to
+create free core class libraries for use with virtual machines and compilers
+for the Java programming language."
 HOMEPAGE="http://www.gnu.org/software/classpath/"
 
 # icedtea-jpegclasses: com.sun.image.codec.jpeg, required for xmlgraphics-commons
 # sun/misc/BASE64*: required for Glassfish/J2EE (rest are supporting classes)
+icedtea="http://icedtea.classpath.org/hg/icedtea6/raw-file/tip"
+openjdk="http://hg.openjdk.java.net/jdk6/jdk6/jdk/raw-file/tip"
 SRC_URI="
 	mirror://gnu/${PN}/${P}.tar.gz
 	${openjdk}/src/share/classes/sun/misc/BASE64Decoder.java
@@ -24,14 +30,17 @@ PATCH_URI="
 	0.98-awt.patch
 	0.98-build.patch
 	0.98-package-com.patch
+	0.98-cygwin64.patch
 "
 
-PKG_NAMES="${PN} ${PN}-doc ${PN}-examples ${PN}-tools java-${PN}"
-classpath_doc_CONTENTS="usr/share/javadoc/"
+PKG_NAMES="${NAME}-examples ${NAME}-tools java-${NAME} javadoc-${NAME}"
 classpath_examples_CONTENTS="usr/share/classpath/examples/"
-classpath_tools_CONTENTS="etc/ usr/bin/ usr/share/info/ usr/share/man/"
+classpath_tools_REQUIRES="jamvm java-antlr java-classpath"
+classpath_tools_CONTENTS="usr/bin/ usr/share/info/ usr/share/man/"
+java_classpath_REQUIRES="java-ecj libgcj-common"
 java_classpath_CONTENTS="--exclude=examples usr/include/ usr/lib/classpath/
                          usr/share/classpath/ usr/share/doc/"
+javadoc_classpath_CONTENTS="usr/share/javadoc/"
 
 DEPS_PATH="/usr/lib/classpath"
 DIFF_EXCLUDES="Makefile resource gjdoc.properties *.html"
@@ -43,17 +52,16 @@ src_unpack_hook() {
 	patch -p5 < icedtea-jpegclasses.patch
 }
 
-#	--includedir=/usr/include/${PN}
 CYGCONF_ARGS="
 	--with-antlr-jar=${JAVA_DIR}/antlr.jar
 	--with-ecj-jar=${JAVA_DIR}/ecj.jar
 	--disable-alsa
 	--disable-plugin
-	--enable-default-toolkit=gnu.java.awt.peer.gtk.GtkToolkit
+	--enable-default-toolkit=gnu.java.awt.peer.${ARCH_i686+gtk.Gtk}${ARCH_x86_64+headless.Headless}Toolkit
 	--enable-default-preferences-peer=file
 	--disable-gconf-peer
 	--disable-gstreamer-peer
-	--enable-gtk-peer
+	--${ARCH_i686+enable}${ARCH_x86_64+disable}-gtk-peer
 	--disable-qt-peer
 	--enable-local-sockets
 	JAVA=/usr/bin/jamvm JAVAC=/usr/bin/ecj
@@ -63,9 +71,9 @@ src_compile() {
 	export gjl_java_args="-Xmx768M"
 
 	cd ${S}
-#	cygautoreconf
+	cygautoreconf
 	cd ${B}
-#	cygconf
+	cygconf
 	cygmake JAVACFLAGS="-nowarn"
 
 	cd ${B}/doc/api
@@ -78,16 +86,8 @@ src_install() {
 	cyginstall
 	dojavadoc doc/api/html
 
-	# gij-4 provides these as well
-	for x in ${D}/usr/bin/*
-	do
-		mv ${x} ${x}-cp
-	done
-	for x in ${D}/usr/share/man/man1/*.1
-	do
-		mv ${x} ${x%.1}-cp.1
-	done
-
 	# conflicts with libgcj-common
 	rm -f ${D}/usr/lib/logging.properties ${D}/usr/lib/security/classpath.security
 }
+
+KEEP_LA_FILES="none"
