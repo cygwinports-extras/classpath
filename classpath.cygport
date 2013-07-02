@@ -57,11 +57,11 @@ CYGCONF_ARGS="
 	--with-ecj-jar=${JAVA_DIR}/ecj.jar
 	--disable-alsa
 	--disable-plugin
-	--enable-default-toolkit=gnu.java.awt.peer.${ARCH_i686+gtk.Gtk}${ARCH_x86_64+headless.Headless}Toolkit
+	--enable-default-toolkit=gnu.java.awt.peer.gtk.GtkToolkit
 	--enable-default-preferences-peer=file
 	--disable-gconf-peer
 	--disable-gstreamer-peer
-	--${ARCH_i686+enable}${ARCH_x86_64+disable}-gtk-peer
+	--enable-gtk-peer
 	--disable-qt-peer
 	--enable-local-sockets
 	JAVA=/usr/bin/jamvm JAVAC=/usr/bin/ecj
